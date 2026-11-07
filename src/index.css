@@ -1,0 +1,13 @@
+/* @import url("https://googleapis.com"); */
+@import "tailwindcss";
+@import "styles/theme.css";
+
+* {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+body {
+  @apply bg-canvas text-ink;
+}

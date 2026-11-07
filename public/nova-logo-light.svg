@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="84" height="26" viewBox="0 0 84 26">
+  <g>
+    <g>
+      <rect width="26" height="26" rx="8" ry="8" fill="#2F5BFF"/>
+      <g transform="translate(6, 6)">
+        <path d="M9.28 2.33C9.4 1.95 9.25 1.53 8.91 1.32C8.57 1.1 8.13 1.15 7.84 1.42L2.59 6.67C2.34 6.92 2.27 7.3 2.4 7.63C2.54 7.95 2.86 8.17 3.21 8.17L5.54 8.17C5.64 8.17 5.73 8.21 5.78 8.29C5.84 8.37 5.85 8.47 5.82 8.56L4.72 11.67C4.6 12.05 4.75 12.47 5.09 12.68C5.43 12.9 5.87 12.85 6.16 12.58L11.41 7.33C11.66 7.08 11.73 6.7 11.6 6.37C11.46 6.05 11.14 5.83 10.79 5.83L8.46 5.83C8.36 5.83 8.27 5.79 8.22 5.71C8.16 5.63 8.15 5.53 8.18 5.44L9.28 2.33Z" fill="none" stroke="#FFFFFF" stroke-width="1.17" stroke-linecap="round" stroke-linejoin="round"/>
+      </g>
+    </g>
+    <g transform="translate(34, 1)">
+      <text x="0" y="18" font-family="Inter" font-size="18" font-weight="700" fill="#FFFFFF" letter-spacing="-0.5">NOVA</text>
+    </g>
+  </g>
+</svg>
