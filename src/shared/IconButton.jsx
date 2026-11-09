@@ -19,7 +19,9 @@ const variants = cva(
 );
 
 export const IconButton = (props) => {
-  const { children, variant } = props;
+  const { children, variant, className } = props;
 
-  return <button className={variants({ variant })}>{children}</button>;
+  return (
+    <button className={variants({ variant, className })}>{children}</button>
+  );
 };

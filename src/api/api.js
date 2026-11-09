@@ -1,6 +1,6 @@
 import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/query/react";
 
-const API_URL = "http://store.bellkyn.netcraze.pro/api";
+const API_URL = "https://store.bellkyn.netcraze.pro/api";
 
 export const api = createApi({
   reducerPath: "api",
