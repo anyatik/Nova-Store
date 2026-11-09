@@ -9,7 +9,9 @@ export const Categories = () => {
       <div className="flex justify-between">
         <div>
           <h2 className="text-2xl font-bold">Категории</h2>
-          <p className="text-muted">Найди то, что подходит именно тебе</p>
+          <p className="text-muted text-sm">
+            Найди то, что подходит именно тебе
+          </p>
         </div>
         <Button variant="ghost">
           Все категории
