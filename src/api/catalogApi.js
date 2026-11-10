@@ -10,7 +10,16 @@ export const catalogApi = api.injectEndpoints({
       transformResponse: (response) => response?.items,
       providesTags: ["Category"],
     }),
+    getProducts: build.query({
+      query: ({ page, limit }) => ({
+        url: "/products",
+        method: "GET",
+        params: { page, limit },
+      }),
+      transformResponse: (response) => response?.items,
+      providesTags: ["Product"],
+    }),
   }),
 });
 
-export const { useGetCategoriesQuery } = catalogApi;
+export const { useGetCategoriesQuery, useGetProductsQuery } = catalogApi;
