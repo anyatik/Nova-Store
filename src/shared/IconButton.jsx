@@ -21,10 +21,13 @@ const variants = cva("flex items-center justify-center border rounded-[10px]", {
 });
 
 export const IconButton = (props) => {
-  const { children, variant, className, size } = props;
+  const { children, variant, className, size, onClick } = props;
 
   return (
-    <button className={variants({ variant, className, size })}>
+    <button
+      onClick={onClick}
+      className={variants({ variant, className, size })}
+    >
       {children}
     </button>
   );
