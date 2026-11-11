@@ -1,6 +1,7 @@
 import { Categories } from "../Components/Categories";
 import { HeroBanner } from "../Components/HeroBanner";
 import { ProductHits } from "../Components/ProductHits";
+import { PromoBanner } from "../Components/PromoBanner";
 
 export const MainPage = () => {
   return (
@@ -8,6 +9,7 @@ export const MainPage = () => {
       <HeroBanner />
       <Categories />
       <ProductHits />
+      <PromoBanner />
     </div>
   );
 };

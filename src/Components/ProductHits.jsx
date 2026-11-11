@@ -38,7 +38,7 @@ export const ProductHits = () => {
       </div>
       <div className="flex gap-6 mt-6 mb-10">
         {products?.map((item) => (
-          <ProductCard data={item} />
+          <ProductCard key={item.id} data={item} />
         ))}
       </div>
     </div>
