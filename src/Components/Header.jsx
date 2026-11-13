@@ -8,7 +8,7 @@ export const Header = () => {
   return (
     <div className="flex h-20 px-16 items-center">
       <div className="flex gap-10 items-center ">
-        <Link>
+        <Link to="/">
           <img className="w-26 h-8" src="/nova-logo.png" />
         </Link>
         <p>Каталог</p>

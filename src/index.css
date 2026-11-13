@@ -11,3 +11,6 @@
 body {
   @apply bg-canvas text-ink;
 }
+#root {
+  isolation: isolate;
+}

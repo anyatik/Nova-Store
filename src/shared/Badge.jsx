@@ -10,6 +10,7 @@ const badgeVariants = cva(
         primary: "text-accent-pressed bg-accent-soft",
         error: "text-danger bg-danger-soft",
         outline: "text-ink bg-border",
+        "lime-outline": "text-lime bg-surface/8 border border-surface/15",
       },
       size: {
         small: "px-2 py-1",
@@ -30,6 +31,7 @@ const dotVariants = cva("rounded-full size-2 flex", {
       primary: "bg-accent-pressed",
       error: "bg-danger",
       outline: "bg-ink",
+      "lime-outline": "bg-lime",
     },
   },
   defaultVariants: { variant: "primary" },

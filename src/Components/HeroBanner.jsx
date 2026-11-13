@@ -4,12 +4,8 @@ import { Badge } from "../shared/Badge";
 
 export const HeroBanner = () => {
   return (
-    <div className="bg-ink flex flex-col my-7 rounded-4xl p-14 gap-6 ">
-      <Badge
-        withDot
-        dotClassName="bg-lime"
-        className="text-lime bg-surface/8 border border-surface/15"
-      >
+    <div className="bg-hero flex flex-col my-7 rounded-4xl p-14 gap-6 ">
+      <Badge withDot dotClassName="bg-lime" variant="lime-outline">
         новая коллекция 2026
       </Badge>
       <h1 className="text-6xl font-bold text-surface w-125">

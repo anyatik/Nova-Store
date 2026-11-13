@@ -4,6 +4,7 @@ import { cva } from "class-variance-authority";
 const variants = cva("flex items-center justify-center border rounded-[10px]", {
   variants: {
     variant: {
+      lime: "bg-lime text-ink",
       primary: "border-accent text-surface bg-accent",
       secondary:
         "border-border bg-surface text-ink hover:bg-canvas-subtle hover:border-border-strong active:bg-disabled active:border-border-strong",

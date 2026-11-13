@@ -6,7 +6,8 @@ const variants = cva(
   {
     variants: {
       variant: {
-        primary: "border-accent text-surface bg-accent",
+        primary:
+          "border-accent text-surface bg-accent hover:bg-accent-hover active:bg-accent-pressed",
         secondary: "border-border bg-surface text-ink",
         ghost: "border-none bg-none",
       },

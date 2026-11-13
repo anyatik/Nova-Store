@@ -156,5 +156,12 @@
   --color-muted-on-dark: var(--color-muted-on-dark);
   --color-text-on-dark-soft: var(--color-text-on-dark-soft);
 
+  --background-image-hero: linear-gradient(
+    90deg,
+    #0d111a 0%,
+    #16214a 55%,
+    #2f5bff 100%
+  );
+
   --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
 }
