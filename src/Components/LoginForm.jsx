@@ -2,9 +2,28 @@ import { ArrowRight, Eye } from "lucide-react";
 import { Button } from "../shared/Button";
 import { Checkbox } from "../shared/Checkbox";
 import { Input } from "../shared/Input";
+import { useLoginMutation } from "../api/authApi";
+import { useState } from "react";
+import { useNavigate } from "react-router";
 
 export const LoginForm = (props) => {
   const { onNavigateToRegister } = props;
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+
+  const [login] = useLoginMutation();
+  const navigate = useNavigate();
+  function onSubmit() {
+    login({ email: email.trim(), password: password.trim() })
+      .unwrap()
+      .then((data) => {
+        localStorage.setItem("accessToken", data.token);
+        navigate("/profile");
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
 
   return (
     <div className="flex flex-col gap-4.5">
@@ -18,13 +37,20 @@ export const LoginForm = (props) => {
         <label className="text-xs text-muted" htmlFor="email">
           Email
         </label>
-        <Input type="email" placeholder="Введите логин" />
+        <Input
+          type="email"
+          placeholder="Введите логин"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+        />
       </div>
       <div>
         <label className="text-xs text-muted" htmlFor="password">
           Пароль
         </label>
         <Input
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
           type="password"
           placeholder="Введите пароль"
           iconLeft={<Eye className="size-4 text-muted" />}
@@ -34,7 +60,10 @@ export const LoginForm = (props) => {
         <Checkbox label="Запомнить меня" />
         <p className="text-xs text-accent">Нужна помощь?</p>
       </div>
-      <Button className="w-full py-3.5 text-[14px] font-bold">
+      <Button
+        className="w-full py-3.5 text-[14px] font-bold"
+        onClick={onSubmit}
+      >
         Войти <ArrowRight className="size-4" />
       </Button>
       <div className="flex justify-center items-center gap-1">

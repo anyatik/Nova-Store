@@ -16,7 +16,7 @@ export const PromoBanner = () => {
           Клавиатура, мышь и подставка — всё, чтобы работать быстрее. Скидка
           применяется автоматически.
         </p>
-        <Button className="bg-ink border border-ink text-sm py-4 px-5 rounded-full w-max">
+        <Button className="bg-ink border border-ink text-sm py-4 px-5 rounded-full w-max hover:bg-ink/90 active:bg-ink">
           Собрать комплект <ArrowRight className="size-4" />
         </Button>
       </div>

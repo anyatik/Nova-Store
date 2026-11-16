@@ -19,9 +19,11 @@ const variants = cva(
 );
 
 export const Button = (props) => {
-  const { children, variant, className } = props;
+  const { children, variant, className, onClick } = props;
 
   return (
-    <button className={cn(variants({ variant }), className)}>{children}</button>
+    <button onClick={onClick} className={cn(variants({ variant }), className)}>
+      {children}
+    </button>
   );
 };

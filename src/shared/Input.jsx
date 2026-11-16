@@ -9,6 +9,8 @@ export const Input = (props) => {
     icon,
     type,
     iconLeft,
+    value,
+    onChange,
   } = props;
 
   return (
@@ -21,6 +23,8 @@ export const Input = (props) => {
     >
       {icon ? icon : null}
       <input
+        value={value}
+        onChange={onChange}
         type={type}
         placeholder={placeholder}
         className="w-full bg-transparent text-ink outline-none border-none focus:ring-0"

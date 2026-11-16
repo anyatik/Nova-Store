@@ -25,16 +25,20 @@ export const Header = () => {
         <IconButton variant="secondary">
           <Heart />
         </IconButton>
-        <IconButton variant="secondary">
-          <User />
-        </IconButton>
-        <Button className="bg-ink border-ink">
-          <ShoppingBag className="size-4" />
-          Корзина
-          <div className="rounded-full bg-lime size-4 text-ink text-[10px] font-bold flex justify-center items-center">
-            3
-          </div>
-        </Button>
+        <Link to={"/profile"}>
+          <IconButton variant="secondary">
+            <User />
+          </IconButton>
+        </Link>
+        <Link to={"/cart"}>
+          <Button className="bg-ink border-ink">
+            <ShoppingBag className="size-4" />
+            Корзина
+            <div className="rounded-full bg-lime size-4 text-ink text-[10px] font-bold flex justify-center items-center">
+              3
+            </div>
+          </Button>
+        </Link>
       </div>
     </div>
   );

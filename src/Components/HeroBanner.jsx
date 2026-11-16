@@ -16,10 +16,10 @@ export const HeroBanner = () => {
         ритм-доставим уже завтра.
       </p>
       <div className="flex gap-2">
-        <Button className="border-lime text-ink! bg-lime font-bold rounded-full px-6 py-4.5">
+        <Button className="border-lime text-ink! bg-lime font-bold rounded-full px-6 py-4.5 hover:bg-lime-soft active:bg-lime active:border-lime-ink">
           Смотреть каталог <ArrowRight className="size-4" />
         </Button>
-        <Button className="border-surface/20 bg-surface/5 text-surface rounded-full px-6 py-4.5">
+        <Button className="border-surface/20 bg-surface/5 text-surface rounded-full px-6 py-4.5 hover:bg-canvas-subtle/20 active:bg-disabled/10">
           Хиты недели
         </Button>
       </div>

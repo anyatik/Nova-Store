@@ -10,11 +10,11 @@ export const api = createApi({
       const token = localStorage.getItem("accessToken");
 
       if (token) {
-        headers.set("autorization", `Bearer ${token}`);
+        headers.set("authorization", `Bearer ${token}`);
       }
       return headers;
     },
   }),
   endpoints: () => ({}),
-  tagTypes: ["Category", "Auth", "Product"],
+  tagTypes: ["Category", "Auth", "Product", "Profile"],
 });
