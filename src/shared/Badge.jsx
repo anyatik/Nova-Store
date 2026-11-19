@@ -11,6 +11,7 @@ const badgeVariants = cva(
         error: "text-danger bg-danger-soft",
         outline: "text-ink bg-border",
         "lime-outline": "text-lime bg-surface/8 border border-surface/15",
+        "lime-ink": "bg-lime-soft text-xs text-lime-ink",
       },
       size: {
         small: "px-2 py-1",
@@ -32,6 +33,7 @@ const dotVariants = cva("rounded-full size-2 flex", {
       error: "bg-danger",
       outline: "bg-ink",
       "lime-outline": "bg-lime",
+      "lime-ink": "bg-lime-ink size-1",
     },
   },
   defaultVariants: { variant: "primary" },

@@ -65,7 +65,7 @@ export const Footer = () => {
         </div>
       </div>
 
-      <div className=" flex h-ph border border-text-disabled/14 mt-8"></div>
+      <div className=" flex h-px border border-text-disabled/14 mt-8"></div>
 
       <div className="flex items-center mt-8">
         <p className="text-xs">

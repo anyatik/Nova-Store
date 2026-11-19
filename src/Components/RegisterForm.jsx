@@ -1,8 +1,7 @@
 import { ArrowRight, Eye, ShieldCheck } from "lucide-react";
 import { Button } from "../shared/Button";
-import { Checkbox } from "../shared/Checkbox";
 import { Input } from "../shared/Input";
-import { Link, useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { useState } from "react";
 import { useRegisterMutation } from "../api/authApi";
 
