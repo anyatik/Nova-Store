@@ -24,7 +24,12 @@ export const UserOrders = () => {
   const { data: orders } = useGetOrdersQuery();
 
   if (selectedOrder) {
-    return <OrderCard id={selectedOrder} />;
+    return (
+      <OrderCard
+        onBackToOrders={() => setSelectedOrder(null)}
+        id={selectedOrder}
+      />
+    );
   }
 
   return (
@@ -76,7 +81,9 @@ export const UserOrders = () => {
                 />
 
                 <div className="flex flex-col">
-                  <p className="text-xs text-muted uppercase">{product.slug}</p>
+                  <p className="text-xs text-muted uppercase">
+                    {product.brand}
+                  </p>
                   <p className="text-sm text-ink">{product.title}</p>
                   <div className="flex items-center">
                     <p className="text-xs text-muted">{product.quantity} шт </p>

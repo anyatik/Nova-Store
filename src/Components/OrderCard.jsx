@@ -1,21 +1,41 @@
-import { CreditCard, Dot, Phone, Van, X } from "lucide-react";
+import {
+  ArrowLeft,
+  Banknote,
+  CreditCard,
+  Dot,
+  Phone,
+  Van,
+  X,
+} from "lucide-react";
 import { Button } from "../shared/Button";
 import { useGetOrdersByIdQuery } from "../api/ordersApi";
 import { Badge } from "../shared/Badge";
 import { IconButton } from "../shared/IconButton";
+import { OrderTimeline } from "./OrderTimeline";
 
 const PAYMENT_METHODS = {
   cash: "Наличными",
   card: "Картой онлайн ",
 };
 
-export const OrderCard = ({ id }) => {
+export const OrderCard = ({ id, onBackToOrders }) => {
   const { data } = useGetOrdersByIdQuery({ id });
   const items = data?.order?.items;
   const delivery = data?.order?.delivery;
-  console.log(items);
+
   return (
     <div className="w-full flex flex-col gap-5.5 mb-4">
+      <div className="flex justify-between">
+        <div className="pl-6 p-6 flex gap-2 bg-surface border border-border rounded-2xl w-max">
+          <p>Номер заказа:</p>
+          <h2 className="font-bold text-xl">{data?.order?.number}</h2>
+        </div>
+
+        <Button onClick={onBackToOrders} variant="ghost" className="text-xs">
+          <ArrowLeft className="size-3.5" /> К заказам
+        </Button>
+      </div>
+
       <div className="flex flex-col justify-between gap-4 bg-surface border border-border rounded-3xl p-6">
         <div className="flex justify-between">
           <div className="flex flex-col gap-2">
@@ -30,6 +50,7 @@ export const OrderCard = ({ id }) => {
                 {data?.order?.status}
               </Badge>
             </div>
+
             <p className="text-xs text-muted">
               Заказ создан. Мы свяжемся для подтверждения доставки.
             </p>
@@ -41,6 +62,7 @@ export const OrderCard = ({ id }) => {
           </Button>
         </div>
         <div className=" flex h-px border border-text-disabled/14"></div>
+        <OrderTimeline id={id} />
       </div>
 
       <div className="flex flex-col justify-between gap-4 bg-surface border border-border rounded-3xl p-6">
@@ -60,7 +82,7 @@ export const OrderCard = ({ id }) => {
                   src={item.imageUrl}
                 />
                 <div className="flex flex-col">
-                  <p className="text-xs text-muted uppercase">{item.slug}</p>
+                  <p className="text-xs text-muted uppercase">{item.brand}</p>
                   <p className="text-sm text-ink">{item.title}</p>
                   <div className="flex items-center">
                     <p className="text-xs text-muted">{item.quantity} шт </p>
@@ -87,13 +109,18 @@ export const OrderCard = ({ id }) => {
             <p>Сумма</p>
             <p>{data?.order?.totalPrice.toLocaleString("ru-RU")} ₽</p>
           </div>
-          <div className="flex justify-between text-muted">
-            <p>Скидка NOVA10</p>
-            <p className="text-lime-ink">Цена со скидкой</p>
-          </div>
+          {data?.order?.promoCode ? (
+            <div className="flex justify-between text-muted">
+              <p>Скидка {data?.order?.promoCode}</p>
+              <p className="text-lime-ink">Цена со скидкой</p>
+            </div>
+          ) : (
+            ""
+          )}
+
           <div className="flex justify-between text-muted">
             <p>Доставка</p>
-            <p className="text-lime-ink">Бесплатно</p>
+            <p className="text-lime-ink">{delivery?.priceLabel}</p>
           </div>
         </div>
 
@@ -120,7 +147,9 @@ export const OrderCard = ({ id }) => {
             </IconButton>
           </div>
           <div className="flex flex-col gap-1 text-xs text-muted">
-            <p className="text-ink font-bold">Курьером · завтра, 10:00–22:00</p>
+            <p className="text-ink font-bold">
+              {delivery?.methodLabel} · завтра, 10:00–22:00
+            </p>
             <p>
               {delivery?.name} · {delivery?.phone}
             </p>
@@ -132,21 +161,51 @@ export const OrderCard = ({ id }) => {
           </div>
         </div>
 
-        <div className="flex flex-2 flex-col justify-between gap-4 bg-surface border border-border rounded-3xl p-6">
+        <div className="flex flex-2 flex-col gap-4 bg-surface border border-border rounded-3xl p-6">
           <div className="flex justify-between items-center">
             <p className="font-bold">Оплата</p>
+            {data?.order?.paymentMethod === "cash" ? (
+              <>
+                <IconButton
+                  variant="ghost"
+                  className="bg-canvas text-muted"
+                  size="sm"
+                >
+                  <Banknote />
+                </IconButton>
+              </>
+            ) : (
+              ""
+            )}
 
-            <IconButton
-              variant="ghost"
-              className="bg-canvas text-muted"
-              size="sm"
-            >
-              <CreditCard />
-            </IconButton>
+            {data?.order?.paymentMethod === "card" ? (
+              <IconButton
+                variant="ghost"
+                className="bg-canvas text-muted"
+                size="sm"
+              >
+                <CreditCard />
+              </IconButton>
+            ) : (
+              ""
+            )}
+          </div>
+          <div className="flex flex-col ">
+            <p className="font-bold text-xs">
+              {PAYMENT_METHODS[data?.order?.paymentMethod]}
+            </p>
+            <p className="text-muted text-xs">
+              {data?.order?.payment?.methodLabel}
+            </p>
           </div>
 
-          <div>
-            <p></p>
+          <div className=" flex h-px border border-text-disabled/14"></div>
+
+          <div className="flex flex-1 justify-between items-center mt-auto">
+            <p className="text-xs text-muted">Сумма оплаты</p>
+            <p className="font-bold">
+              {data?.order?.totalPrice.toLocaleString("ru-RU")} ₽
+            </p>
           </div>
         </div>
       </div>
