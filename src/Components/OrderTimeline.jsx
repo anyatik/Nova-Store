@@ -29,6 +29,7 @@ export const OrderTimeline = ({ id }) => {
   const { data } = useGetOrdersByIdQuery({ id });
   const payment = data?.order?.payment;
   const delivery = data?.order?.delivery;
+  const status = data?.order?.status;
 
   function calculateVariant(step) {
     if (data?.order?.status === step.value) {
@@ -43,30 +44,40 @@ export const OrderTimeline = ({ id }) => {
   }
   return (
     <div className="flex text-xs gap-4 items-center">
-      {STATUS_STEPS.map((step, index) => (
+      {status === "cancelled" ? (
+        <p>
+          Заказ отменен. При оплате картой, деньги отправляются сразу. Обычно
+          они поступают на карту в течение 2–3 дней, максимум — 10 дней. Срок
+          зачисления зависит от вашего банка и платёжной системы.
+        </p>
+      ) : (
         <>
-          <div className="flex gap-2 items-center">
-            <div
-              className={stepVariants({
-                variant: calculateVariant(step),
-              })}
-            >
-              {step.count}
-            </div>
-            <div>
-              <p className="font-bold">{step.label}</p>
-              {step.count === 1 && (
-                <p>{dayjs(data?.order?.createdAt).format("DD MMMM")}</p>
+          {STATUS_STEPS.map((step, index) => (
+            <>
+              <div className="flex gap-2 items-center">
+                <div
+                  className={stepVariants({
+                    variant: calculateVariant(step),
+                  })}
+                >
+                  {step.count}
+                </div>
+                <div>
+                  <p className="font-bold">{step.label}</p>
+                  {step.count === 1 && (
+                    <p>{dayjs(data?.order?.createdAt).format("DD MMMM")}</p>
+                  )}
+                  {step.count == 2 && <p>{payment?.methodLabel}</p>}
+                  {step.count === 3 && <p>{delivery?.methodLabel}</p>}
+                </div>
+              </div>
+              {index + 1 !== STATUS_STEPS.length && (
+                <div className=" flex h-px border border-text-disabled/14 min-w-11"></div>
               )}
-              {step.count == 2 && <p>{payment?.methodLabel}</p>}
-              {step.count === 3 && <p>{delivery?.methodLabel}</p>}
-            </div>
-          </div>
-          {index + 1 !== STATUS_STEPS.length && (
-            <div className=" flex h-px border border-text-disabled/14 min-w-11"></div>
-          )}
+            </>
+          ))}
         </>
-      ))}
+      )}
     </div>
   );
 };

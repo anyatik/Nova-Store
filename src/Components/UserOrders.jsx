@@ -21,7 +21,7 @@ const PAYMENT_METHODS = {
 export const UserOrders = () => {
   const [selectedValue, setSelectedValue] = useState(data[0].value);
   const [selectedOrder, setSelectedOrder] = useState(null);
-  const { data: orders } = useGetOrdersQuery();
+  const { data: orders, refetch } = useGetOrdersQuery();
 
   if (selectedOrder) {
     return (
@@ -40,7 +40,11 @@ export const UserOrders = () => {
           <p className="text-xs text-muted">3 заказа · 1 активный</p>
         </div>
         <div>
-          <Button variant="secondary" className="text-xs py-2.5">
+          <Button
+            onClick={refetch}
+            variant="secondary"
+            className="text-xs py-2.5"
+          >
             <RefreshCw className="size-3.5" /> Обновить
           </Button>
         </div>

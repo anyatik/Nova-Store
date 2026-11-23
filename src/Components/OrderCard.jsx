@@ -18,10 +18,19 @@ const PAYMENT_METHODS = {
   card: "Картой онлайн ",
 };
 
+const STATUS = {
+  pending_payment: "Создан",
+  paid: "Оплата",
+  shipped: "Отправлен",
+  delivered: "Доставлен",
+  cancelled: "Отменён",
+};
+
 export const OrderCard = ({ id, onBackToOrders }) => {
   const { data } = useGetOrdersByIdQuery({ id });
   const items = data?.order?.items;
   const delivery = data?.order?.delivery;
+  const status = data?.order?.status;
 
   return (
     <div className="w-full flex flex-col gap-5.5 mb-4">
@@ -41,19 +50,64 @@ export const OrderCard = ({ id, onBackToOrders }) => {
           <div className="flex flex-col gap-2">
             <div className="flex gap-2">
               <p className="font-bold text-md">Статус заказа</p>
-              <Badge
-                withDot
-                dotClassName="lime-ink"
-                variant="lime-ink"
-                size="small"
-              >
-                {data?.order?.status}
-              </Badge>
+              {status === "paid" && (
+                <Badge
+                  withDot
+                  dotClassName="warning"
+                  variant="warning"
+                  size="small"
+                >
+                  {STATUS[status]}
+                </Badge>
+              )}
+              {status === "pending_payment" && (
+                <Badge
+                  withDot
+                  dotClassName="primary"
+                  variant="primary"
+                  size="small"
+                >
+                  {STATUS[status]}
+                </Badge>
+              )}
+              {status === "shipped" && (
+                <Badge
+                  withDot
+                  dotClassName="primary-re"
+                  variant="primary-re"
+                  size="small"
+                >
+                  {STATUS[status]}
+                </Badge>
+              )}
+              {status === "delivered" && (
+                <Badge
+                  withDot
+                  dotClassName="lime-ink"
+                  variant="lime-ink"
+                  size="small"
+                >
+                  {STATUS[status]}
+                </Badge>
+              )}
+              {status === "cancelled" && (
+                <Badge
+                  withDot
+                  dotClassName="error"
+                  variant="error"
+                  size="small"
+                >
+                  {STATUS[status]}
+                </Badge>
+              )}
             </div>
-
-            <p className="text-xs text-muted">
-              Заказ создан. Мы свяжемся для подтверждения доставки.
-            </p>
+            {status === "cancelled" ? (
+              ""
+            ) : (
+              <p className="text-xs text-muted">
+                Заказ создан. Мы свяжемся для подтверждения доставки.
+              </p>
+            )}
           </div>
 
           <Button variant="secondary" className="text-xs text-danger! py-2.5">

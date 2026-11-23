@@ -31,7 +31,7 @@ export const Header = () => {
           </IconButton>
         </Link>
         <Link to={"/cart"}>
-          <Button className="bg-ink border-ink">
+          <Button className="bg-ink border-ink h-full hover:bg-ink/90 active:bg-ink">
             <ShoppingBag className="size-4" />
             Корзина
             <div className="rounded-full bg-lime size-4 text-ink text-[10px] font-bold flex justify-center items-center">
