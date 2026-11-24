@@ -5,6 +5,7 @@ import { AuthPage } from "./AuthPage";
 import { UserPage } from "./UserPage";
 import { AuthGuard } from "../Components/AuthGuard";
 import { CartPage } from "./CartPage";
+import { CatalogPage } from "./CatalogPage";
 export const Router = () => {
   return (
     <>
@@ -12,6 +13,7 @@ export const Router = () => {
         <Route element={<Layout />}>
           <Route index element={<MainPage />} />
           <Route path="/auth" element={<AuthPage />} />
+          <Route path="/catalog" element={<CatalogPage />} />
 
           <Route
             path="/profile"

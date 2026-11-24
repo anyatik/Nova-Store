@@ -8,7 +8,7 @@ const badgesVariants = {
   new: { label: "New", variant: "primary" },
 };
 
-export const ProductCard = ({ data }) => {
+export const ProductCard = ({ data, onAddItemClick }) => {
   const {
     imageUrl,
     brand,
@@ -19,12 +19,13 @@ export const ProductCard = ({ data }) => {
     price,
     oldPrice,
     badges,
+    id,
   } = data;
 
   const firstBadge = badges[0];
   return (
-    <div className="flex flex-col bg-surface rounded-3xl  border border-border flex-1">
-      <div className=" h-52.5 rounded-t-3xl overflow-hidden flex justify-end relative">
+    <div className="flex flex-col bg-surface rounded-3xl  border border-border flex-1 min-h-[430px]">
+      <div className=" h-52.5 rounded-t-3xl overflow-hidden flex justify-end relative ">
         <Badge
           className="absolute left-4 top-4"
           variant={badgesVariants[firstBadge].variant}
@@ -63,7 +64,7 @@ export const ProductCard = ({ data }) => {
               )}
             </p>
           </div>
-          <IconButton size="sm">
+          <IconButton onClick={onAddItemClick} size="sm">
             <ShoppingBag />
           </IconButton>
         </div>

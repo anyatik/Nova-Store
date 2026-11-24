@@ -11,6 +11,7 @@ export const Tabs = (props) => {
     onValueChange,
     direction = "horizontal",
     listClassName,
+    tabClassName,
   } = props;
   const itemComponents = items
     .map((item) => item?.component)
@@ -35,6 +36,7 @@ export const Tabs = (props) => {
             className={cn(
               "flex justify-center items-center gap-2 w-full min-w-54 p-2 text-xs font-bold rounded-xl transition-colors duration-200 ease-in-out data-active:text-surface data-active:bg-ink",
               direction === "vertical" && "justify-start py-3",
+              tabClassName,
             )}
             value={item.value}
             key={item.value}

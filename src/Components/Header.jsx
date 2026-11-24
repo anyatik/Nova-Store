@@ -11,7 +11,9 @@ export const Header = () => {
         <Link to="/">
           <img className="w-26 h-8" src="/nova-logo.png" />
         </Link>
-        <p>Каталог</p>
+        <Link to="/catalog">
+          <p>Каталог</p>
+        </Link>
         <p>Новинки</p>
         <p>Скидки</p>
         <p>О нас</p>
